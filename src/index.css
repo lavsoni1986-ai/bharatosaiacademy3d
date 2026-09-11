@@ -1,0 +1,163 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: #050505;
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background: rgba(0, 245, 255, 0.3);
+    color: #ffffff;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #050505;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #00F5FF, #8A2EFF);
+    border-radius: 3px;
+  }
+}
+
+@layer components {
+  /* Architectural & Editorial Card Surfaces */
+  .editorial-card {
+    background: #0d0e12;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    transition: all 0.25s ease;
+  }
+
+  .editorial-card:hover {
+    border-color: rgba(255, 255, 255, 0.18);
+    background: #111318;
+    box-shadow: 0 12px 32px -8px rgba(0, 0, 0, 0.6);
+  }
+
+  /* Restrained Glass Surface (Functional Only) */
+  .glass-panel {
+    background: rgba(18, 20, 26, 0.65);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+  }
+
+  .glass-panel-strong {
+    background: rgba(14, 16, 22, 0.85);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 16px;
+  }
+
+  /* Editorial Gradient Text (Restrained) */
+  .gradient-text {
+    color: #ffffff;
+  }
+
+  /* Tactile Solid Primary Button (No Rainbow Neon Gradient) */
+  .btn-primary {
+    background-color: #00e5ff;
+    color: #050505;
+    font-weight: 600;
+    padding: 13px 28px;
+    border-radius: 8px;
+    border: 1px solid rgba(0, 229, 255, 0.3);
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .btn-primary:hover {
+    background-color: #33ebff;
+    transform: translateY(-1px);
+    box-shadow: 0 8px 24px -4px rgba(0, 229, 255, 0.25);
+  }
+
+  .btn-primary:active {
+    transform: translateY(0);
+  }
+
+  /* Tactile Secondary Button (Solid Clean Dark Charcoal) */
+  .btn-glass {
+    background-color: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: #f0f0f3;
+    padding: 13px 28px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .btn-glass:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.22);
+    color: #ffffff;
+    transform: translateY(-1px);
+  }
+
+  .btn-glass:active {
+    transform: translateY(0);
+  }
+
+  .scanline {
+    display: none;
+  }
+
+  .vignette {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9998;
+    background: radial-gradient(ellipse at center, transparent 0%, transparent 65%, rgba(0,0,0,0.5) 100%);
+  }
+}
+
+@layer utilities {
+  .text-shadow-glow {
+    text-shadow: 0 0 20px rgba(0, 245, 255, 0.5);
+  }
+
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+}
