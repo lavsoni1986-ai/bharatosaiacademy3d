@@ -1,11 +1,20 @@
-import React, { useRef } from 'react'
+﻿import React, { useRef, useState } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { School, CheckCircle2, ArrowRight, MessageSquare, Smartphone } from 'lucide-react'
+import { School, CheckCircle2, ArrowRight, MessageSquare, Smartphone, FileText } from 'lucide-react'
 import { GYANODAY_BATCH_INFO, ACADEMY_INFO } from '../../data/academyData'
+import GyanodayRegistrationModal from './GyanodayRegistrationModal'
 
 const GyanodayBatch = () => {
   const sectionRef = useRef(null)
   const isInView = useInView(sectionRef, { once: true, margin: '-40px' })
+
+  const [modalOpen, setModalOpen] = useState(false)
+  const [selectedPlanId, setSelectedPlanId] = useState('gyanoday_full')
+
+  const handleOpenRegistration = (planId) => {
+    setSelectedPlanId(planId)
+    setModalOpen(true)
+  }
 
   return (
     <section
@@ -94,21 +103,30 @@ const GyanodayBatch = () => {
                   </div>
                 </div>
 
-                {/* Card Action Button */}
-                <div className="pt-4 border-t border-white/[0.06]">
+                {/* Card Action Buttons: Online Registration & WhatsApp */}
+                <div className="pt-4 border-t border-white/[0.06] space-y-2.5">
+                  <button
+                    type="button"
+                    onClick={() => handleOpenRegistration(plan.id)}
+                    className={`w-full py-3.5 px-5 rounded-lg text-xs sm:text-sm font-inter font-semibold flex items-center justify-center gap-2 transition-all shadow-md ${
+                      isFull
+                        ? 'btn-primary'
+                        : 'bg-cyan-950/70 hover:bg-cyan-900/80 border border-cyan-500/30 text-white hover:text-cyan-200'
+                    }`}
+                  >
+                    <FileText size={15} />
+                    <span>Register Online (Receipt PDF) · {plan.fee}</span>
+                    <ArrowRight size={13} className="ml-0.5" />
+                  </button>
+
                   <a
                     href={whatsappUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`w-full py-3 px-5 rounded-lg text-xs font-inter font-medium flex items-center justify-center gap-2 transition-all ${
-                      isFull
-                        ? 'btn-primary'
-                        : 'btn-glass text-white hover:text-cyan-300'
-                    }`}
+                    className="btn-glass w-full py-2.5 px-4 rounded-lg text-xs font-inter text-white/70 hover:text-white flex items-center justify-center gap-2"
                   >
-                    <MessageSquare size={14} />
-                    <span>Register on WhatsApp · {plan.fee}</span>
-                    <ArrowRight size={13} className="ml-0.5" />
+                    <MessageSquare size={13} className="text-cyan-400" />
+                    <span>Inquire via WhatsApp Desk</span>
                   </a>
                 </div>
               </motion.div>
@@ -135,19 +153,34 @@ const GyanodayBatch = () => {
             </div>
           </div>
 
-          <div className="w-full md:w-auto shrink-0">
+          <div className="w-full md:w-auto shrink-0 flex flex-col sm:flex-row gap-3">
+            <button
+              type="button"
+              onClick={() => handleOpenRegistration('gyanoday_full')}
+              className="btn-primary w-full sm:w-auto text-xs font-inter font-medium px-5 py-3 flex items-center justify-center gap-2 shadow-md"
+            >
+              <FileText size={14} />
+              <span>Open Admission Form</span>
+            </button>
             <a
               href={`https://wa.me/${ACADEMY_INFO.contact.whatsapp}?text=${encodeURIComponent(GYANODAY_BATCH_INFO.generalWhatsappText)}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-glass w-full md:w-auto text-xs font-inter font-normal px-5 py-3 flex items-center justify-center gap-2"
+              className="btn-glass w-full sm:w-auto text-xs font-inter font-normal px-5 py-3 flex items-center justify-center gap-2"
             >
               <MessageSquare size={14} className="text-cyan-400" />
-              <span>Gyanoday Admission Desk</span>
+              <span>Gyanoday WhatsApp Desk</span>
             </a>
           </div>
         </div>
       </div>
+
+      {/* Registration Modal Dialog */}
+      <GyanodayRegistrationModal
+        isOpen={modalOpen}
+        onClose={() => setModalOpen(false)}
+        defaultPlanId={selectedPlanId}
+      />
     </section>
   )
 }
