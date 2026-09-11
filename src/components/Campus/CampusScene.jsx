@@ -168,10 +168,10 @@ const NeuralPortal = React.memo(() => {
       {/* Interior Warm Foyer Light */}
       <pointLight position={[0, 0, 0.5]} intensity={1.2} distance={6} color="#ffe4b5" />
 
-      {/* Subtle Integrated Cyan Data Channel Accent Line */}
+      {/* Understated Architectural Lintel Light Detail */}
       <mesh position={[0, 1.9, 0.41]}>
-        <planeGeometry args={[2.8, 0.03]} />
-        <meshBasicMaterial color="#00e5ff" transparent opacity={0.8} />
+        <planeGeometry args={[2.8, 0.02]} />
+        <meshBasicMaterial color="#d4e4ec" transparent opacity={0.6} />
       </mesh>
 
       {/* Physical Architectural Academy Signage Mounted on Lintel */}

@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect, useRef, Suspense } from 'react'
+import React, { useState, useCallback, useEffect, useRef, Suspense, lazy } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import BootSequence from './components/Loader/BootSequence'
 import EarthScene from './components/Earth/EarthScene'
@@ -10,6 +10,10 @@ import Footer from './components/Footer/Footer'
 import { Navbar, HeroSection } from './components/Hero/HeroSection'
 import { useLenis } from './hooks/useLenis'
 
+// Lazy load new institutional sections for optimal performance
+const Infrastructure = lazy(() => import('./components/Infrastructure/Infrastructure'))
+const FounderCard = lazy(() => import('./components/Founder/FounderCard'))
+
 // Loading fallback
 const SceneFallback = () => (
   <div className="w-full h-screen flex items-center justify-center bg-bharatos-bg">
@@ -18,7 +22,7 @@ const SceneFallback = () => (
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
     >
-      <div className="w-12 h-12 rounded-full border-2 border-neon-cyan/30 border-t-neon-cyan animate-spin" />
+      <div className="w-12 h-12 rounded-full border-2 border-cyan-400/30 border-t-cyan-400 animate-spin" />
       <span className="font-inter text-white/50 text-sm tracking-wider">Loading Experience...</span>
     </motion.div>
   </div>
@@ -36,7 +40,7 @@ const TransitionOverlay = ({ active }) => {
           exit={{ opacity: 0 }}
           transition={{ duration: 0.9 }}
           style={{
-            background: 'radial-gradient(ellipse at center, rgba(0, 245, 255, 0.12) 0%, rgba(138, 46, 255, 0.08) 45%, rgba(5, 5, 5, 0.85) 100%)'
+            background: 'radial-gradient(ellipse at center, rgba(0, 229, 255, 0.12) 0%, rgba(18, 20, 26, 0.8) 50%, rgba(5, 5, 5, 0.95) 100%)'
           }}
         >
           <motion.div
@@ -46,7 +50,7 @@ const TransitionOverlay = ({ active }) => {
             exit={{ opacity: 0, scale: 1.15 }}
             transition={{ duration: 0.6 }}
           >
-            <div className="w-12 h-12 mx-auto mb-4 rounded-full border-2 border-neon-cyan/40 border-t-neon-cyan animate-spin" />
+            <div className="w-12 h-12 mx-auto mb-4 rounded-full border-2 border-cyan-400/40 border-t-cyan-400 animate-spin" />
             <p className="font-mono text-white/80 text-xs tracking-widest uppercase">
               ENTERING BHARATOS AI CAMPUS...
             </p>
@@ -58,7 +62,7 @@ const TransitionOverlay = ({ active }) => {
 }
 
 function App() {
-  const [scene, setScene] = useState('boot') // boot -> earth -> campus -> content (hero -> courses -> stats -> journey -> footer)
+  const [scene, setScene] = useState('boot') // boot -> earth -> campus -> content (hero -> courses -> infrastructure -> outcomes -> mentor -> journey -> footer)
   const [showNavbar, setShowNavbar] = useState(false)
   const [transitioning, setTransitioning] = useState(false)
   const transitionTimerRef = useRef(null)
@@ -154,7 +158,7 @@ function App() {
         )}
       </AnimatePresence>
 
-      {/* Stage 4+: Main Content (Hero -> Courses -> Statistics -> Timeline -> Footer) */}
+      {/* Stage 4+: Main Content (Hero -> Courses -> Infrastructure -> Outcomes -> Mentor -> Journey -> Footer) */}
       <AnimatePresence>
         {scene === 'content' && (
           <motion.div
@@ -168,28 +172,42 @@ function App() {
             {/* Hero Section */}
             <HeroSection />
 
-            {/* Course Modules */}
+            {/* AI Foundation Course Curriculum */}
             <section id="courses">
               <Suspense fallback={<SceneFallback />}>
                 <CourseModules />
               </Suspense>
             </section>
 
-            {/* Statistics */}
-            <section id="stats">
+            {/* Learning Infrastructure (Muskan Associate Partner) */}
+            <section id="infrastructure">
+              <Suspense fallback={<SceneFallback />}>
+                <Infrastructure />
+              </Suspense>
+            </section>
+
+            {/* Student Outcomes & First Batch Proof */}
+            <section id="outcomes">
               <Suspense fallback={<SceneFallback />}>
                 <Statistics />
               </Suspense>
             </section>
 
-            {/* Timeline */}
+            {/* Founder & Mentor */}
+            <section id="mentor">
+              <Suspense fallback={<SceneFallback />}>
+                <FounderCard />
+              </Suspense>
+            </section>
+
+            {/* 45-Day Curriculum Progression Timeline */}
             <section id="journey">
               <Suspense fallback={<SceneFallback />}>
                 <Timeline />
               </Suspense>
             </section>
 
-            {/* Footer */}
+            {/* Institutional Footer */}
             <section id="footer">
               <Suspense fallback={<SceneFallback />}>
                 <Footer />

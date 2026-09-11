@@ -11,12 +11,10 @@
   "dependencies": {
     "@react-three/drei": "^9.120.0",
     "@react-three/fiber": "^9.0.0-alpha",
-    "@react-three/postprocessing": "^2.16.3",
     "framer-motion": "^11.15.0",
     "gsap": "^3.12.5",
     "lenis": "^1.1.18",
     "lucide-react": "^0.468.0",
-    "postprocessing": "^6.36.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-icons": "^5.4.0",

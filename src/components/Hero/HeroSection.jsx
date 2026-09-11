@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, ArrowRight } from 'lucide-react'
+import { Menu, X, ArrowRight, BookOpen, MapPin } from 'lucide-react'
+import { ACADEMY_INFO, FLAGSHIP_PROGRAM } from '../../data/academyData'
 
 // --- INSTITUTIONAL NAVBAR ---
 const Navbar = ({ visible }) => {
@@ -17,9 +18,10 @@ const Navbar = ({ visible }) => {
 
   const navLinks = [
     { label: 'Curriculum', href: '#courses' },
-    { label: 'Outcomes', href: '#stats' },
+    { label: 'Infrastructure', href: '#infrastructure' },
+    { label: 'Outcomes', href: '#outcomes' },
+    { label: 'Mentor', href: '#mentor' },
     { label: 'Journey', href: '#journey' },
-    { label: 'Campus', href: '#hero' },
     { label: 'Contact', href: '#footer' },
   ]
 
@@ -68,7 +70,7 @@ const Navbar = ({ visible }) => {
                 href="#courses"
                 className="btn-primary text-xs font-inter font-medium px-4 py-2"
               >
-                Enroll
+                Enroll Now
               </a>
             </div>
 
@@ -94,8 +96,9 @@ const Navbar = ({ visible }) => {
                 className="md:hidden bg-[#090a0d] border-t border-white/[0.08] overflow-hidden"
               >
                 <div className="px-6 py-6 space-y-4 max-w-md mx-auto">
-                  <div className="pb-2 border-b border-white/[0.06] text-xs font-inter text-white/50">
-                    Shahdol, Madhya Pradesh, India
+                  <div className="pb-2 border-b border-white/[0.06] text-xs font-inter text-white/50 flex items-center gap-1.5">
+                    <MapPin size={13} className="text-cyan-400 shrink-0" />
+                    <span>{ACADEMY_INFO.location.displayLocation}</span>
                   </div>
                   {navLinks.map((link) => (
                     <a
@@ -113,7 +116,7 @@ const Navbar = ({ visible }) => {
                       className="btn-primary w-full text-center text-xs font-inter font-medium py-2.5"
                       onClick={() => setMobileMenuOpen(false)}
                     >
-                      Explore Courses
+                      Explore Course · {FLAGSHIP_PROGRAM.fee}
                     </a>
                   </div>
                 </div>
@@ -130,13 +133,13 @@ const Navbar = ({ visible }) => {
 const ScrollIndicator = () => {
   return (
     <motion.div
-      className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 pointer-events-none opacity-40 hover:opacity-70 transition-opacity"
+      className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 pointer-events-none opacity-40 hover:opacity-70 transition-opacity"
       initial={{ opacity: 0 }}
       animate={{ opacity: 0.4 }}
       transition={{ delay: 1.0, duration: 0.6 }}
     >
       <span className="font-inter text-white/60 text-[11px] tracking-wider">
-        Scroll to explore
+        Scroll to explore curriculum
       </span>
       <div className="w-px h-6 bg-white/25" />
     </motion.div>
@@ -158,23 +161,24 @@ const HeroSection = () => {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center justify-center px-6 sm:px-8 py-28 md:py-36 overflow-hidden bg-bharatos-bg"
+      className="relative min-h-screen flex items-center justify-center px-6 sm:px-8 pt-32 pb-24 md:py-36 overflow-hidden bg-bharatos-bg"
     >
-      {/* Subtle Natural Atmospheric Depth (Zero loud grid or neon gradients) */}
+      {/* Atmospheric Depth (Zero loud grid or neon gradients) */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-cyan-950/20 rounded-full blur-[140px]" />
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-cyan-950/15 rounded-full blur-[140px]" />
         <div className="absolute bottom-0 inset-x-0 h-40 bg-gradient-to-t from-bharatos-bg via-bharatos-bg/80 to-transparent" />
       </div>
 
       <div className="max-w-4xl mx-auto text-center relative z-10 w-full">
-        {/* 1. Calm Institutional Eyebrow */}
+        {/* 1. Calm Institutional Location Anchor */}
         <motion.div
           initial={reducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, delay: 0.15 }}
-          className="inline-block text-xs sm:text-sm font-inter text-cyan-400 font-medium tracking-wide mb-6"
+          className="inline-flex items-center gap-2 text-xs sm:text-sm font-inter text-cyan-400 font-medium tracking-wide mb-6 px-3.5 py-1.5 rounded-full bg-white/[0.03] border border-white/[0.08]"
         >
-          BharatOS AI Academy • Shahdol, Madhya Pradesh
+          <span className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
+          <span>BharatOS AI Academy • {ACADEMY_INFO.location.displayLocation}</span>
         </motion.div>
 
         {/* 2. Editorial Authoritative Headline */}
@@ -188,22 +192,38 @@ const HeroSection = () => {
           <span className="font-normal text-white/90">with practical AI.</span>
         </motion.h1>
 
-        {/* 3. Human, Clear Supporting Copy */}
+        {/* 3. Program Pillar Badge: Transparent Duration & Fee */}
+        <motion.div
+          initial={reducedMotion ? { opacity: 1 } : { opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.45, delay: 0.4 }}
+          className="inline-flex flex-wrap items-center justify-center gap-2.5 sm:gap-3 mb-8 text-xs sm:text-sm font-inter"
+        >
+          <span className="px-3 py-1 rounded-md bg-white/[0.05] border border-white/10 text-white font-medium">
+            {FLAGSHIP_PROGRAM.name}
+          </span>
+          <span className="text-white/40">•</span>
+          <span className="text-white/80 font-medium">{FLAGSHIP_PROGRAM.subtitle}</span>
+          <span className="text-white/40">•</span>
+          <span className="text-cyan-400 font-semibold text-sm sm:text-base">{FLAGSHIP_PROGRAM.fee}</span>
+        </motion.div>
+
+        {/* 4. Human, Clear Supporting Copy */}
         <motion.p
           initial={reducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.5 }}
           className="font-inter text-white/70 text-base sm:text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed font-normal"
         >
-          An elite technology institution rooted in central India. Learn AI by building
-          real things — software, automation, intelligent agents, and useful products.
+          Learn AI by building real things — software, automation, intelligent agents,
+          and useful products. In-person laptop workstation labs in Shahdol with smartphone-first continuous practice.
         </motion.p>
 
-        {/* 4. Action Center: Tactile Primary CTA & Editorial Secondary Link */}
+        {/* 5. Action Center: Tactile Primary CTA & Editorial Secondary Link */}
         <motion.div
           initial={reducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, delay: 0.7 }}
+          transition={{ duration: 0.4, delay: 0.65 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mb-12"
         >
           {/* Primary Action */}
@@ -211,29 +231,32 @@ const HeroSection = () => {
             href="#courses"
             className="btn-primary w-full sm:w-auto text-sm font-inter font-medium px-7 py-3 flex items-center justify-center gap-2 group"
           >
-            <span>Start learning</span>
+            <span>Start Learning · {FLAGSHIP_PROGRAM.fee}</span>
             <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
           </a>
 
           {/* Secondary Action */}
           <a
-            href="#journey"
-            className="btn-glass w-full sm:w-auto text-sm font-inter font-normal px-6 py-3"
+            href="#courses"
+            className="btn-glass w-full sm:w-auto text-sm font-inter font-normal px-6 py-3 flex items-center justify-center gap-2"
           >
-            Explore Academy Journey
+            <BookOpen size={16} className="text-cyan-400" />
+            <span>View 45-Day Curriculum</span>
           </a>
         </motion.div>
 
-        {/* 5. Institutional Location Footnote */}
+        {/* 6. Institutional Location & Hardware Footnote */}
         <motion.div
           initial={reducedMotion ? { opacity: 1 } : { opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.85 }}
-          className="pt-6 border-t border-white/[0.08] flex items-center justify-center gap-4 font-inter text-xs text-white/40"
+          transition={{ duration: 0.5, delay: 0.8 }}
+          className="pt-6 border-t border-white/[0.08] flex flex-wrap items-center justify-center gap-2.5 sm:gap-4 font-inter text-xs text-white/40"
         >
-          <span>Practical AI & Software Engineering</span>
+          <span>Near Jain Mandir, Near Mohanram Talab</span>
           <span>•</span>
-          <span>Shahdol, India</span>
+          <span>Shahdol, Madhya Pradesh</span>
+          <span>•</span>
+          <span>In-Class Hardware Workstations</span>
         </motion.div>
       </div>
 

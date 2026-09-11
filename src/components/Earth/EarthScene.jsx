@@ -793,27 +793,32 @@ const EarthScene = ({ onTransitionComplete }) => {
             {/* Mission Telemetry Readout */}
             <div className="glass-panel px-4 py-2.5 border border-white/10 backdrop-blur-md">
               <div className="flex items-center gap-2 mb-1">
-                <div className="w-2 h-2 rounded-full bg-neon-cyan animate-pulse" />
+                <div className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
                 <span className="font-mono text-xs text-white/90 tracking-widest uppercase">
-                  {telemetryStage === 'asia' && 'TARGETING: ASIA'}
-                  {telemetryStage === 'india' && 'TARGETING: INDIA'}
-                  {telemetryStage === 'mp' && 'TARGETING: MADHYA PRADESH'}
-                  {telemetryStage === 'shahdol' && 'LOCK CONFIRMED: SHAHDOL'}
-                  {telemetryStage === 'warp' && 'CAMPUS WARP: INITIALIZING'}
+                  {telemetryStage === 'asia' && 'REGIONAL DESCENT: ASIA'}
+                  {telemetryStage === 'india' && 'REGIONAL DESCENT: INDIA'}
+                  {telemetryStage === 'mp' && 'APPROACH: MADHYA PRADESH'}
+                  {telemetryStage === 'shahdol' && 'LOCATION CONFIRMED: SHAHDOL'}
+                  {telemetryStage === 'warp' && 'ENTERING SHAHDOL CAMPUS'}
                 </span>
               </div>
               <div className="flex gap-4 font-mono text-[10px] text-white/50">
-                <span>GEO: 23.3002° N, 81.3656° E</span>
+                <span>COORDINATES: 23.3002° N, 81.3656° E</span>
                 <span>
-                  {telemetryStage === 'shahdol' || telemetryStage === 'warp' ? 'DEST: BHARATOS ACADEMY' : 'SYSTEM: PLANETARY DESCENT'}
+                  {telemetryStage === 'shahdol' || telemetryStage === 'warp' ? 'CAMPUS: BHARATOS AI ACADEMY' : 'CENTRAL INDIA'}
                 </span>
               </div>
             </div>
 
-            {/* Clean System Status */}
-            <div className="hidden sm:block glass-panel px-3 py-2 border border-white/10 font-mono text-[10px] text-white/60 text-right">
-              <div>SUBSYSTEM: QUANTUM NAVIGATION</div>
-              <div className="text-neon-cyan/80">LATENCY: 0.08ms | LOCK: 99.9%</div>
+            {/* Skip Control for Immediate Academy Access */}
+            <div className="pointer-events-auto">
+              <button
+                onClick={onTransitionComplete}
+                className="glass-panel px-3.5 py-2 border border-white/10 hover:border-white/30 text-white/70 hover:text-white font-inter text-xs transition-colors"
+                title="Skip directly to BharatOS AI Academy campus"
+              >
+                Skip to Academy →
+              </button>
             </div>
           </motion.div>
         )}
@@ -823,7 +828,7 @@ const EarthScene = ({ onTransitionComplete }) => {
       <AnimatePresence>
         {!cinematicActive && (
           <motion.div
-            className="absolute bottom-12 left-1/2 -translate-x-1/2 z-20"
+            className="absolute bottom-12 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-3"
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 20 }}
@@ -831,8 +836,8 @@ const EarthScene = ({ onTransitionComplete }) => {
           >
             <motion.button
               onClick={startCinematicDescent}
-              className="btn-primary text-base px-10 py-4 shadow-xl"
-              whileHover={{ scale: 1.04 }}
+              className="btn-primary text-sm sm:text-base px-8 sm:px-10 py-3.5 sm:py-4 shadow-xl"
+              whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.98 }}
             >
               <span className="flex items-center gap-3 tracking-wider font-sora">
@@ -842,6 +847,13 @@ const EarthScene = ({ onTransitionComplete }) => {
                 BEGIN CINEMATIC DESCENT
               </span>
             </motion.button>
+
+            <button
+              onClick={onTransitionComplete}
+              className="text-white/40 hover:text-white/70 font-inter text-xs transition-colors py-1 focus:outline-none"
+            >
+              Skip directly to campus & curriculum →
+            </button>
           </motion.div>
         )}
       </AnimatePresence>

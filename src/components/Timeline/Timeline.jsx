@@ -1,49 +1,44 @@
 import React, { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { GraduationCap, BookOpen, FolderKanban, Briefcase, Rocket, Crown } from 'lucide-react'
+import { GraduationCap, BookOpen, Code2, Cpu, Rocket, Briefcase } from 'lucide-react'
+import { FLAGSHIP_PROGRAM } from '../../data/academyData'
 
 const timelineSteps = [
   {
     id: 1,
-    title: 'Student',
-    description: 'Join as a curious learner with zero or some coding background',
+    title: 'Admissions & In-Class Setup',
+    description: 'Join the cohort in Shahdol. Orientation to workstation hardware, interactive smartboard, and mobile practice environment.',
     icon: GraduationCap,
-    color: '#00F5FF',
   },
   {
     id: 2,
-    title: 'Learning',
-    description: 'Immersive hands-on training with real AI tools and projects',
+    title: 'AI Mental Models & Prompt Architecture',
+    description: 'Systematic prompt structuring, few-shot prompting, and context framing protocols across modern frontier LLMs.',
     icon: BookOpen,
-    color: '#8A2EFF',
   },
   {
     id: 3,
-    title: 'Projects',
-    description: 'Build portfolio-worthy AI projects that solve real problems',
-    icon: FolderKanban,
-    color: '#00F5FF',
+    title: 'AI-Assisted Coding & Tool Workflows',
+    description: 'Learn modern software development workflows using AI coding companions (Cursor, Copilot, Cline) to write real code.',
+    icon: Code2,
   },
   {
     id: 4,
-    title: 'Internship',
-    description: 'Get placed in AI companies for industry experience',
-    icon: Briefcase,
-    color: '#8A2EFF',
+    title: 'Workflows & Multi-Agent Systems',
+    description: 'Building connected business workflows, webhook automation pipelines, and autonomous agent loops with tool usage.',
+    icon: Cpu,
   },
   {
     id: 5,
-    title: 'Startup',
-    description: 'Launch your own AI-powered startup with mentorship',
+    title: 'Practical Capstone Build',
+    description: 'Design, build, and deploy an end-to-end working software product solving a real problem for regional businesses or workflows.',
     icon: Rocket,
-    color: '#00F5FF',
   },
   {
     id: 6,
-    title: 'AI Entrepreneur',
-    description: 'Scale your AI venture and become a leader in the ecosystem',
-    icon: Crown,
-    color: '#8A2EFF',
+    title: 'Certification & Real Deployment',
+    description: 'Complete the course review, receive official BharatOS Academy completion credentials, and graduate with a deployed portfolio.',
+    icon: Briefcase,
   },
 ]
 
@@ -94,14 +89,16 @@ const Timeline = () => {
       <div className="max-w-4xl mx-auto relative z-10">
         {/* Section Header */}
         <div className="max-w-2xl mb-16 text-left">
-          <span className="text-xs font-inter text-cyan-400 font-medium tracking-wider uppercase block mb-3">
-            Academic Trajectory
-          </span>
+          <div className="inline-flex items-center gap-2 text-xs font-inter text-cyan-400 font-medium tracking-wider uppercase mb-3">
+            <span>45-Day Trajectory</span>
+            <span>•</span>
+            <span>Learning Roadmap</span>
+          </div>
           <h2 className="font-sora text-3xl sm:text-4xl md:text-5xl font-semibold text-white mb-4 tracking-tight">
-            From Learner to AI Engineer
+            Curriculum Progression
           </h2>
           <p className="font-inter text-white/60 text-base sm:text-lg leading-relaxed">
-            A structured path guiding students through fundamental software discipline, complex agent design, industry internships, and venture creation.
+            A step-by-step roadmap taking students through foundational software discipline, agent loops, automation pipelines, and real client deployment.
           </p>
         </div>
 
