@@ -13,6 +13,7 @@ import { useLenis } from './hooks/useLenis'
 // Lazy load new institutional sections for optimal performance
 const Infrastructure = lazy(() => import('./components/Infrastructure/Infrastructure'))
 const FounderCard = lazy(() => import('./components/Founder/FounderCard'))
+const GyanodayBatch = lazy(() => import('./components/Gyanoday/GyanodayBatch'))
 
 // Loading fallback
 const SceneFallback = () => (
@@ -62,12 +63,13 @@ const TransitionOverlay = ({ active }) => {
 }
 
 function App() {
-  const [scene, setScene] = useState('boot') // boot -> earth -> campus -> content (hero -> courses -> infrastructure -> outcomes -> mentor -> journey -> footer)
-  const [showNavbar, setShowNavbar] = useState(false)
+  // Cinematic Flow: boot -> earth -> campus -> content
+  const [scene, setScene] = useState('boot')
   const [transitioning, setTransitioning] = useState(false)
+  const [showNavbar, setShowNavbar] = useState(false)
   const transitionTimerRef = useRef(null)
 
-  // Initialize smooth scroll
+  // Initialize Lenis smooth scroll
   useLenis()
 
   // Clean up transition timer on unmount
@@ -79,25 +81,30 @@ function App() {
     }
   }, [])
 
-  // Handle boot sequence completion
+  // Transitions with robust cleanup and state isolation
   const handleBootComplete = useCallback(() => {
     setScene('earth')
   }, [])
 
-  // Handle Earth to Campus transition
   const handleEarthTransition = useCallback(() => {
     setTransitioning(true)
     if (transitionTimerRef.current) clearTimeout(transitionTimerRef.current)
     transitionTimerRef.current = setTimeout(() => {
       setScene('campus')
       setTransitioning(false)
-    }, 1500)
+    }, 900)
   }, [])
 
-  // Handle Campus to Content transition
   const handleCampusComplete = useCallback(() => {
     setScene('content')
     setShowNavbar(true)
+    if (transitionTimerRef.current) clearTimeout(transitionTimerRef.current)
+    transitionTimerRef.current = setTimeout(() => {
+      const heroEl = document.getElementById('hero')
+      if (heroEl) {
+        heroEl.scrollIntoView({ behavior: 'smooth' })
+      }
+    }, 100)
   }, [])
 
   // Keep Navbar visible in content scene; let Navbar component handle transparent-to-frosted transition
@@ -108,7 +115,7 @@ function App() {
   }, [scene])
 
   return (
-    <div className="relative bg-bharatos-bg min-h-screen">
+    <div className="relative w-full min-h-screen bg-bharatos-bg text-white overflow-x-hidden selection:bg-cyan-500/30 selection:text-white">
       {/* Scanline effect */}
       <div className="scanline" />
 
@@ -158,7 +165,7 @@ function App() {
         )}
       </AnimatePresence>
 
-      {/* Stage 4+: Main Content (Hero -> Courses -> Infrastructure -> Outcomes -> Mentor -> Journey -> Footer) */}
+      {/* Stage 4+: Main Content (Hero -> Courses -> Gyanoday -> Infrastructure -> Outcomes -> Mentor -> Journey -> Footer) */}
       <AnimatePresence>
         {scene === 'content' && (
           <motion.div
@@ -176,6 +183,13 @@ function App() {
             <section id="courses">
               <Suspense fallback={<SceneFallback />}>
                 <CourseModules />
+              </Suspense>
+            </section>
+
+            {/* Gyanoday School Batch (Special Institutional Cohort) */}
+            <section id="gyanoday">
+              <Suspense fallback={<SceneFallback />}>
+                <GyanodayBatch />
               </Suspense>
             </section>
 

@@ -158,3 +158,51 @@ export const FOUNDER_INFO = {
   portraitImage: '/founder.jpg.png',
 }
 
+export const GYANODAY_BATCH_INFO = {
+  name: 'Gyanoday School Batch',
+  programType: 'School Special Initiative',
+  badge: 'INSTITUTIONAL COHORT',
+  audience: 'Exclusively for eligible Gyanoday School students in Shahdol',
+  duration: '4 Months Access',
+  summary: 'A dedicated subsidized practical AI learning initiative established specifically for Gyanoday School students, providing structured school-level AI literacy, disciplined prompt protocols, and hands-on smartphone development.',
+  plans: [
+    {
+      id: 'gyanoday_full',
+      title: 'Gyanoday Special — Full Payment',
+      badge: 'SUBSIDIZED ONE-TIME',
+      fee: '₹1,599',
+      feeNumeric: 1599,
+      duration: '4 Months Complete Access',
+      savingNote: 'Save ₹401 (Regular Monthly Total: ₹2,000)',
+      isRecommended: true,
+      features: [
+        'Complete 4-Month AI Curriculum for School Students',
+        '1-on-1 Guidance by Google Cloud Certified Mentor',
+        'Smartphone AI Development Lab & mobile sandbox exercises',
+        'Official BharatOS Academy Certificate of Completion',
+        'Scheduled practical in-person workstation sessions',
+      ],
+      whatsappText: 'Hello BharatOS AI Academy, I want to register for the Gyanoday School Batch (Full Payment: ₹1,599). Please share the registration process and confirm the applicable fee.',
+    },
+    {
+      id: 'gyanoday_monthly',
+      title: 'Monthly Installment Plan',
+      badge: 'FLEXIBLE SCHEDULE',
+      fee: '₹500',
+      feeNumeric: 500,
+      duration: '₹500 / month × 4 Months',
+      savingNote: 'Total: ₹2,000 (Billed Monthly across 4 Months)',
+      isRecommended: false,
+      features: [
+        'Month-by-Month Modular Access',
+        'Live AI Guided Practical Sessions',
+        'Mobile Sandbox Exercises & prompt drills',
+        'Community Peer Support & instructor reviews',
+      ],
+      whatsappText: 'Hello BharatOS AI Academy, I want to register for the Gyanoday School Batch (Monthly Plan: ₹500/month). Please share the registration process and confirm the applicable fee.',
+    },
+  ],
+  generalWhatsappText: 'Hello BharatOS AI Academy, I want to register for the Gyanoday School Batch. Please share the registration process and confirm the applicable fee.',
+}
+
+

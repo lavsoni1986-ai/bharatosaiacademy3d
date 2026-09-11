@@ -18,6 +18,7 @@ const Navbar = ({ visible }) => {
 
   const navLinks = [
     { label: 'Curriculum', href: '#courses' },
+    { label: 'Gyanoday', href: '#gyanoday' },
     { label: 'Infrastructure', href: '#infrastructure' },
     { label: 'Outcomes', href: '#outcomes' },
     { label: 'Mentor', href: '#mentor' },
