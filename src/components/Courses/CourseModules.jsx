@@ -60,11 +60,11 @@ const CourseModules = () => {
     <section
       id="courses"
       ref={sectionRef}
-      className="relative pt-12 pb-20 sm:pt-16 sm:pb-24 px-6 sm:px-8 border-t border-white/[0.06] bg-[#07080b]"
+      className="relative pt-4 pb-20 sm:pt-6 sm:pb-24 px-6 sm:px-8 border-t border-white/[0.06] bg-[#07080b]"
     >
       <div className="max-w-6xl mx-auto relative z-10">
         {/* Section Header with Clear Program Pricing */}
-        <div ref={titleRef} className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10 sm:mb-12">
+        <div ref={titleRef} className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-6 sm:mb-8">
           <div className="max-w-2xl text-left">
             <div className="inline-flex items-center gap-2 text-xs font-inter text-cyan-400 font-medium tracking-wider uppercase mb-3">
               <span>Academic Curriculum</span>
