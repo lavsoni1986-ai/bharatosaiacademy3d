@@ -42,14 +42,29 @@ const Navbar = ({ visible }) => {
           aria-label="Main Navigation"
         >
           <div className="max-w-6xl mx-auto px-6 sm:px-8 flex items-center justify-between">
-            {/* Clean Typographic Institutional Identity */}
+            {/* Official Academy Brand Identity Lockup */}
             <a
               href="#"
-              className="flex items-center gap-2.5 group focus:outline-none focus-visible:ring-1 focus-visible:ring-cyan-400 rounded py-1"
+              className="flex items-center gap-2.5 sm:gap-3 group focus:outline-none focus-visible:ring-1 focus-visible:ring-cyan-400 rounded py-1"
             >
-              <span className="font-sora font-semibold text-white text-base tracking-tight">
-                BharatOS <span className="font-normal text-white/60">AI Academy</span>
-              </span>
+              <img
+                src="/bharatos-academy-logo.png"
+                alt="BharatOS AI Academy — Shahdol"
+                className="h-8 sm:h-9 w-auto drop-shadow-[0_0_12px_rgba(0,240,255,0.2)] transition-transform group-hover:scale-105"
+                width="36"
+                height="46"
+              />
+              <div className="flex flex-col text-left">
+                <span className="font-sora font-semibold text-white text-sm sm:text-base tracking-tight leading-tight">
+                  BharatOS <span className="font-normal text-white/70">AI Academy</span>
+                </span>
+                <span className="text-[10px] font-inter text-white/50 tracking-wider uppercase hidden sm:block">
+                  Learn • Build • Grow | Shahdol
+                </span>
+                <span className="text-[10px] font-mono text-cyan-400/80 sm:hidden">
+                  Shahdol
+                </span>
+              </div>
             </a>
 
             {/* Desktop Navigation Links */}
@@ -171,6 +186,22 @@ const HeroSection = () => {
       </div>
 
       <div className="max-w-4xl mx-auto text-center relative z-10 w-full">
+        {/* Official Academy Emblem */}
+        <motion.div
+          initial={reducedMotion ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="flex justify-center mb-5"
+        >
+          <img
+            src="/bharatos-academy-logo.png"
+            alt="BharatOS AI Academy — Shahdol"
+            className="w-16 sm:w-20 h-auto drop-shadow-[0_0_25px_rgba(0,240,255,0.25)]"
+            width="80"
+            height="102"
+          />
+        </motion.div>
+
         {/* 1. Calm Institutional Location Anchor */}
         <motion.div
           initial={reducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 }}

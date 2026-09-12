@@ -20,17 +20,27 @@ const Footer = () => {
     <footer id="footer" ref={sectionRef} className="relative border-t border-white/[0.08] bg-[#050608] text-white">
       <div className="max-w-6xl mx-auto px-6 sm:px-8 py-20">
         {/* Top Institutional Header */}
-        <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-8 pb-16 border-b border-white/[0.08]">
-          <div className="max-w-xl">
-            <div className="font-sora text-3xl sm:text-4xl font-semibold text-white tracking-tight mb-2">
-              BharatOS <span className="font-normal text-white/70">AI Academy</span>
+        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8 pb-16 border-b border-white/[0.08]">
+          <div className="flex items-start sm:items-center gap-4 sm:gap-5 max-w-2xl">
+            <img
+              src="/bharatos-academy-logo.png"
+              alt="BharatOS AI Academy — Shahdol"
+              className="w-12 sm:w-16 h-auto shrink-0 drop-shadow-[0_0_15px_rgba(0,240,255,0.15)] mt-1 sm:mt-0"
+              width="64"
+              height="82"
+              loading="lazy"
+            />
+            <div>
+              <div className="font-sora text-2xl sm:text-3xl font-semibold text-white tracking-tight mb-1">
+                BharatOS <span className="font-normal text-white/70">AI Academy</span>
+              </div>
+              <p className="font-inter text-cyan-400 text-xs sm:text-sm font-medium mb-1.5">
+                {FLAGSHIP_PROGRAM.name} • {FLAGSHIP_PROGRAM.subtitle} • {FLAGSHIP_PROGRAM.fee}
+              </p>
+              <p className="font-inter text-white/60 text-xs sm:text-sm leading-relaxed">
+                Empowering students in central India with tier-1 practical AI, automation, and software engineering capabilities.
+              </p>
             </div>
-            <p className="font-inter text-cyan-400 text-sm font-medium mb-3">
-              {FLAGSHIP_PROGRAM.name} • {FLAGSHIP_PROGRAM.subtitle} • {FLAGSHIP_PROGRAM.fee}
-            </p>
-            <p className="font-inter text-white/60 text-sm leading-relaxed">
-              Empowering students in central India with tier-1 practical AI, automation, and software engineering capabilities.
-            </p>
           </div>
 
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full md:w-auto">
