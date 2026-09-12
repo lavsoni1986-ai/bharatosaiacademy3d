@@ -177,7 +177,7 @@ const HeroSection = () => {
   return (
     <section
       id="hero"
-      className="relative flex flex-col items-center justify-center px-6 sm:px-8 pt-28 pb-4 sm:pt-32 sm:pb-6 md:pt-36 md:pb-8 overflow-hidden bg-bharatos-bg"
+      className="relative flex flex-col items-center justify-center px-6 sm:px-8 pt-28 pb-2 sm:pt-32 sm:pb-3 md:pt-36 md:pb-4 overflow-hidden bg-bharatos-bg"
     >
       {/* Atmospheric Depth (Zero loud grid or neon gradients) */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">

@@ -1,12 +1,11 @@
 import React, { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { useScrollAnimation } from '../../hooks/useScrollAnimation'
 import { CheckCircle2, ArrowRight, ShieldCheck, Laptop, PhoneCall } from 'lucide-react'
 import { FLAGSHIP_PROGRAM, ACADEMY_INFO } from '../../data/academyData'
 
 const ModuleCard = ({ module, index }) => {
   const cardRef = useRef(null)
-  const isInView = useInView(cardRef, { once: true, margin: '-20px' })
+  const isInView = useInView(cardRef, { once: true, margin: '100px' })
 
   return (
     <motion.div
@@ -54,40 +53,39 @@ const ModuleCard = ({ module, index }) => {
 
 const CourseModules = () => {
   const sectionRef = useRef(null)
-  const titleRef = useScrollAnimation({ from: { opacity: 0, y: 30 }, to: { opacity: 1, y: 0 }, duration: 0.8 })
 
   return (
     <section
       id="courses"
       ref={sectionRef}
-      className="relative pt-4 pb-20 sm:pt-6 sm:pb-24 px-6 sm:px-8 border-t border-white/[0.06] bg-[#07080b]"
+      className="relative pt-2 pb-16 sm:pt-3 sm:pb-20 md:pt-4 md:pb-24 px-6 sm:px-8 border-t border-white/[0.06] bg-[#07080b]"
     >
       <div className="max-w-6xl mx-auto relative z-10">
         {/* Section Header with Clear Program Pricing */}
-        <div ref={titleRef} className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-6 sm:mb-8">
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-5 sm:gap-6 mb-5 sm:mb-6">
           <div className="max-w-2xl text-left">
-            <div className="inline-flex items-center gap-2 text-xs font-inter text-cyan-400 font-medium tracking-wider uppercase mb-3">
+            <div className="inline-flex items-center gap-2 text-xs font-inter text-cyan-400 font-medium tracking-wider uppercase mb-2 sm:mb-2.5">
               <span>Academic Curriculum</span>
               <span>•</span>
               <span>{FLAGSHIP_PROGRAM.subtitle}</span>
             </div>
-            <h2 className="font-sora text-3xl sm:text-4xl md:text-5xl font-semibold text-white mb-4 tracking-tight">
+            <h2 className="font-sora text-2xl sm:text-3xl md:text-4xl font-semibold text-white mb-2.5 sm:mb-3 tracking-tight">
               {FLAGSHIP_PROGRAM.name}
             </h2>
-            <p className="font-inter text-white/65 text-base sm:text-lg leading-relaxed">
+            <p className="font-inter text-white/65 text-sm sm:text-base leading-relaxed">
               {FLAGSHIP_PROGRAM.summary}
             </p>
           </div>
 
           {/* Program Fast-Fact Card */}
-          <div className="editorial-card p-6 lg:min-w-[290px] shrink-0 border border-white/10 bg-[#0d0f15]">
-            <div className="text-xs font-inter text-white/50 uppercase tracking-wider mb-1">
+          <div className="editorial-card p-5 sm:p-6 lg:min-w-[280px] shrink-0 border border-white/10 bg-[#0d0f15]">
+            <div className="text-[11px] font-inter text-white/50 uppercase tracking-wider mb-1">
               45-Day Program Fee
             </div>
-            <div className="font-sora text-3xl sm:text-4xl font-semibold text-cyan-400 mb-2">
+            <div className="font-sora text-2xl sm:text-3xl font-semibold text-cyan-400 mb-1.5">
               {FLAGSHIP_PROGRAM.fee}
             </div>
-            <div className="text-xs font-inter text-white/60 mb-4">
+            <div className="text-xs font-inter text-white/60 mb-3.5">
               All inclusive • Full classroom workstation access
             </div>
             <a
