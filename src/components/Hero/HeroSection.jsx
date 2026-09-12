@@ -36,8 +36,8 @@ const Navbar = ({ visible }) => {
           transition={{ duration: 0.4, ease: 'easeOut' }}
           className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
             scrolled
-              ? 'bg-[#07111f]/95 backdrop-blur-md border-b border-cyan-500/15 shadow-sm py-3.5'
-              : 'bg-[#07111f]/85 backdrop-blur-md border-b border-white/[0.06] py-4 sm:py-5'
+              ? 'bg-[#071827]/95 backdrop-blur-md border-b border-cyan-500/20 shadow-md shadow-black/25 py-3.5'
+              : 'bg-[#071827]/90 backdrop-blur-md border-b border-cyan-500/10 py-4 sm:py-5'
           }`}
           aria-label="Main Navigation"
         >
@@ -109,7 +109,7 @@ const Navbar = ({ visible }) => {
                 animate={{ opacity: 1, height: 'auto' }}
                 exit={{ opacity: 0, height: 0 }}
                 transition={{ duration: 0.2 }}
-                className="md:hidden bg-[#07111f] border-t border-white/[0.08] overflow-hidden"
+                className="md:hidden bg-[#071827] border-t border-cyan-500/20 overflow-hidden"
               >
                 <div className="px-6 py-6 space-y-4 max-w-md mx-auto">
                   <div className="pb-2 border-b border-white/[0.06] text-xs font-inter text-white/50 flex items-center gap-1.5">
@@ -177,7 +177,7 @@ const HeroSection = () => {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center justify-center px-6 sm:px-8 pt-32 pb-24 md:py-36 overflow-hidden bg-bharatos-bg"
+      className="relative flex flex-col items-center justify-center px-6 sm:px-8 pt-28 pb-12 sm:pt-32 sm:pb-14 md:pt-36 md:pb-16 overflow-hidden bg-bharatos-bg"
     >
       {/* Atmospheric Depth (Zero loud grid or neon gradients) */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
@@ -291,8 +291,6 @@ const HeroSection = () => {
           <span>In-Class Hardware Workstations</span>
         </motion.div>
       </div>
-
-      <ScrollIndicator />
     </section>
   )
 }
