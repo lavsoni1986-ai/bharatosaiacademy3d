@@ -1,6 +1,6 @@
 import React, { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { MapPin, Mail, Phone, MessageSquare, ArrowRight } from 'lucide-react'
+import { MapPin, Mail, Phone, MessageSquare, ArrowRight, Instagram } from 'lucide-react'
 import { ACADEMY_INFO, FLAGSHIP_PROGRAM, INFRASTRUCTURE_PARTNER } from '../../data/academyData'
 
 const FooterLink = ({ href, children }) => (
@@ -126,6 +126,40 @@ const Footer = () => {
                 Founder & Mentor: Lav Soni
               </div>
             </div>
+          </div>
+        </div>
+
+        {/* Official Instagram Follow Section */}
+        <div className="py-8 sm:py-10 border-b border-white/[0.08]">
+          <div className="editorial-card p-6 sm:p-7 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 bg-[#090b10] border border-white/[0.08] hover:border-cyan-500/25 transition-all">
+            <div className="flex items-start sm:items-center gap-4">
+              <div className="w-12 h-12 rounded-xl bg-cyan-950/40 border border-cyan-500/20 flex items-center justify-center text-cyan-400 shrink-0">
+                <Instagram size={22} />
+              </div>
+              <div>
+                <div className="inline-flex items-center gap-2 text-xs font-inter text-cyan-400 font-medium tracking-wider uppercase mb-1">
+                  <span>Official Social Channel</span>
+                  <span>•</span>
+                  <span>@bharatosacademy</span>
+                </div>
+                <h4 className="font-sora text-base sm:text-lg font-semibold text-white tracking-tight">
+                  Follow us on Instagram
+                </h4>
+                <p className="font-inter text-white/60 text-xs sm:text-sm mt-0.5">
+                  Latest batches, workshops, announcements & academy updates
+                </p>
+              </div>
+            </div>
+
+            <a
+              href="https://www.instagram.com/bharatosacademy/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-glass text-xs font-inter font-medium px-5 py-2.5 flex items-center gap-2 text-cyan-400 hover:text-white border-cyan-500/30 hover:border-cyan-400 w-full sm:w-auto justify-center shrink-0 group"
+            >
+              <span>Follow @bharatosacademy</span>
+              <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform text-cyan-400" />
+            </a>
           </div>
         </div>
 
