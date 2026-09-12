@@ -375,8 +375,19 @@ const Campus = ({ onExplore, onAdmissions }) => {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.35, duration: 0.7 }}
-            className="editorial-card px-6 py-5 sm:px-7 sm:py-6 border border-white/10 shadow-2xl"
+            className="editorial-card px-6 py-5 sm:px-7 sm:py-6 border border-white/10 shadow-2xl flex flex-col items-center"
           >
+            {/* Official BharatOS Academy Emblem */}
+            <div className="flex justify-center mb-3">
+              <img
+                src="/bharatos-academy-logo.png"
+                alt="BharatOS AI Academy Emblem"
+                className="w-16 sm:w-20 md:w-[84px] h-auto drop-shadow-[0_0_20px_rgba(0,240,255,0.22)]"
+                width="84"
+                height="107"
+              />
+            </div>
+
             <div className="text-[11px] font-inter text-cyan-400 font-medium tracking-wider uppercase mb-1.5">
               Campus Arrival
             </div>

@@ -177,26 +177,44 @@ const BootSequence = ({ onComplete }) => {
             />
           </div>
 
-          <div className="relative z-10 w-full max-w-3xl px-6">
-            {/* Terminal header */}
+          <div className="relative z-10 w-full max-w-3xl px-6 flex flex-col items-center">
+            {/* Official BharatOS Academy Emblem */}
             <motion.div
-              className="mb-8 flex items-center gap-3"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.2 }}
+              initial={{ opacity: 0, scale: 0.9, y: -10 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: 'easeOut' }}
+              className="flex justify-center mb-5 sm:mb-6"
             >
-              <div className="flex gap-2">
-                <div className="w-3 h-3 rounded-full bg-red-500/80" />
-                <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
-                <div className="w-3 h-3 rounded-full bg-green-500/80" />
-              </div>
-              <span className="text-xs text-white/30 font-mono">
-                bharatos@shahdol:~$ init_sequence
-              </span>
+              <img
+                src="/bharatos-academy-logo.png"
+                alt="BharatOS AI Academy Emblem"
+                className="w-20 sm:w-24 md:w-28 h-auto drop-shadow-[0_0_25px_rgba(0,240,255,0.22)]"
+                width="112"
+                height="143"
+              />
             </motion.div>
 
-            {/* Terminal lines */}
-            <div className="space-y-3 mb-12 min-h-[280px]">
+            {/* Terminal Window Container */}
+            <div className="w-full">
+              {/* Terminal header */}
+              <motion.div
+                className="mb-4 sm:mb-6 flex items-center gap-3"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.2 }}
+              >
+                <div className="flex gap-2">
+                  <div className="w-3 h-3 rounded-full bg-red-500/80" />
+                  <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
+                  <div className="w-3 h-3 rounded-full bg-green-500/80" />
+                </div>
+                <span className="text-xs text-white/30 font-mono">
+                  bharatos@shahdol:~$ init_sequence
+                </span>
+              </motion.div>
+
+              {/* Terminal lines */}
+              <div className="space-y-2.5 sm:space-y-3 mb-8 sm:mb-10 min-h-[240px] sm:min-h-[260px]">
               {visibleLines.map((line) => (
                 <motion.div
                   key={line.text}
@@ -292,6 +310,7 @@ const BootSequence = ({ onComplete }) => {
                 </motion.div>
               )}
             </AnimatePresence>
+            </div>
           </div>
 
           {/* Corner decorations */}
