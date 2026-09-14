@@ -637,6 +637,55 @@ const CinematicCameraController = React.memo(({
   )
 })
 
+// WebGL Context and Teardown Manager to ensure zero context leaks or spurious console warnings
+function WebGLContextManager() {
+  const { gl } = useThree()
+
+  useEffect(() => {
+    let isMounted = true
+    const canvas = gl.domElement
+
+    const handleContextLost = (e) => {
+      // Prevent browser default behavior to allow Three.js context restoration
+      e.preventDefault()
+
+      if (isMounted) {
+        // Genuine unexpected context loss while mounted
+        if (import.meta.env.DEV) {
+          console.warn('[EarthScene] WebGL context lost unexpectedly while mounted. Handling gracefully...')
+        }
+      } else {
+        // Expected context reclamation during unmount
+        if (import.meta.env.DEV) {
+          console.debug('[EarthScene] WebGL context released during unmount.')
+        }
+      }
+    }
+
+    const handleContextRestored = () => {
+      if (isMounted && import.meta.env.DEV) {
+        console.info('[EarthScene] WebGL context restored.')
+      }
+    }
+
+    canvas.addEventListener('webglcontextlost', handleContextLost, false)
+    canvas.addEventListener('webglcontextrestored', handleContextRestored, false)
+
+    return () => {
+      isMounted = false
+      canvas.removeEventListener('webglcontextlost', handleContextLost, false)
+      canvas.removeEventListener('webglcontextrestored', handleContextRestored, false)
+      try {
+        gl.dispose()
+      } catch {
+        // Silently ignore if already disposed
+      }
+    }
+  }, [gl])
+
+  return null
+}
+
 // --- MAIN EARTH SCENE COMPONENT ---
 const EarthScene = ({ onTransitionComplete }) => {
   const [cinematicActive, setCinematicActive] = useState(false)
@@ -722,19 +771,8 @@ const EarthScene = ({ onTransitionComplete }) => {
           gl={{ antialias: true, alpha: true, powerPreference: 'high-performance' }}
           dpr={[1, 1.5]}
           style={{ background: '#050505' }}
-          onCreated={({ gl }) => {
-            const canvas = gl.domElement
-            const handleContextLost = (e) => {
-              e.preventDefault()
-              console.warn('WebGL context lost. Handling gracefully...')
-            }
-            const handleContextRestored = () => {
-              console.log('WebGL context restored.')
-            }
-            canvas.addEventListener('webglcontextlost', handleContextLost, false)
-            canvas.addEventListener('webglcontextrestored', handleContextRestored, false)
-          }}
         >
+          <WebGLContextManager />
           <Suspense fallback={null}>
             {/* Illumination */}
             <ambientLight intensity={0.25} />

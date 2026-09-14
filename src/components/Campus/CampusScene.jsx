@@ -1,5 +1,5 @@
 import React, { useRef, useMemo, useEffect, Suspense } from 'react'
-import { Canvas, useFrame } from '@react-three/fiber'
+import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import { Stars, Text } from '@react-three/drei'
 import * as THREE from 'three'
 import { motion } from 'framer-motion'
@@ -179,7 +179,7 @@ const NeuralPortal = React.memo(() => {
         position={[0, 2.22, 0.42]}
         fontSize={0.2}
         color="#ffffff"
-        font="https://fonts.gstatic.com/s/sora/v12/xMQbuFFYT72XzQspDr-vWpOq5TX7.woff"
+        font="/fonts/sora-semibold.ttf"
         letterSpacing={0.08}
         anchorX="center"
         anchorY="middle"
@@ -191,7 +191,7 @@ const NeuralPortal = React.memo(() => {
         position={[0, 2.02, 0.42]}
         fontSize={0.085}
         color="#a0aec0"
-        font="https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hjp-Ek-_EeA.woff"
+        font="/fonts/inter-regular.ttf"
         letterSpacing={0.12}
         anchorX="center"
         anchorY="middle"
@@ -328,6 +328,55 @@ const CampusScene = React.memo(() => {
   )
 })
 
+// WebGL Context and Teardown Manager to ensure zero context leaks or spurious console warnings
+function WebGLContextManager() {
+  const { gl } = useThree()
+
+  useEffect(() => {
+    let isMounted = true
+    const canvas = gl.domElement
+
+    const handleContextLost = (e) => {
+      // Prevent browser default behavior to allow Three.js context restoration
+      e.preventDefault()
+
+      if (isMounted) {
+        // Genuine unexpected context loss while mounted
+        if (import.meta.env.DEV) {
+          console.warn('[Campus] WebGL context lost unexpectedly while mounted. Handling gracefully...')
+        }
+      } else {
+        // Expected context reclamation during unmount
+        if (import.meta.env.DEV) {
+          console.debug('[Campus] WebGL context released during unmount.')
+        }
+      }
+    }
+
+    const handleContextRestored = () => {
+      if (isMounted && import.meta.env.DEV) {
+        console.info('[Campus] WebGL context restored.')
+      }
+    }
+
+    canvas.addEventListener('webglcontextlost', handleContextLost, false)
+    canvas.addEventListener('webglcontextrestored', handleContextRestored, false)
+
+    return () => {
+      isMounted = false
+      canvas.removeEventListener('webglcontextlost', handleContextLost, false)
+      canvas.removeEventListener('webglcontextrestored', handleContextRestored, false)
+      try {
+        gl.dispose()
+      } catch {
+        // Silently ignore if already disposed
+      }
+    }
+  }, [gl])
+
+  return null
+}
+
 // --- MAIN CAMPUS EXPORT COMPONENT ---
 const Campus = ({ onExplore, onAdmissions }) => {
   return (
@@ -338,19 +387,8 @@ const Campus = ({ onExplore, onAdmissions }) => {
           gl={{ antialias: true, alpha: true, powerPreference: 'high-performance' }}
           dpr={[1, 1.5]}
           style={{ background: '#050505' }}
-          onCreated={({ gl }) => {
-            const canvas = gl.domElement
-            const handleContextLost = (e) => {
-              e.preventDefault()
-              console.warn('WebGL context lost in Campus. Handling gracefully...')
-            }
-            const handleContextRestored = () => {
-              console.log('WebGL context restored in Campus.')
-            }
-            canvas.addEventListener('webglcontextlost', handleContextLost, false)
-            canvas.addEventListener('webglcontextrestored', handleContextRestored, false)
-          }}
         >
+          <WebGLContextManager />
           <Suspense fallback={null}>
             {/* Architectural Evening Lighting Setup: Warm Key, Cool Neutral Fill, No Purple */}
             <ambientLight intensity={0.35} color="#d8e2ec" />

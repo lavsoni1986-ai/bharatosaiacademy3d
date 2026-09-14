@@ -122,40 +122,39 @@ function App() {
       {/* Vignette */}
       <div className="vignette" />
 
-      {/* Stage 1: Boot Sequence */}
-      <AnimatePresence>
+      {/* Mutually Exclusive Scene Presentations with Sequential Lifecycle Guarantee */}
+      <AnimatePresence mode="wait">
         {scene === 'boot' && (
-          <BootSequence onComplete={handleBootComplete} />
+          <motion.div
+            key="boot"
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            <BootSequence onComplete={handleBootComplete} />
+          </motion.div>
         )}
-      </AnimatePresence>
 
-      {/* Stage 2: Earth Scene */}
-      <AnimatePresence>
         {scene === 'earth' && (
           <motion.div
+            key="earth"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 1 }}
+            transition={{ duration: 0.25 }}
           >
             <Suspense fallback={<SceneFallback />}>
               <EarthScene onTransitionComplete={handleEarthTransition} />
             </Suspense>
           </motion.div>
         )}
-      </AnimatePresence>
 
-      {/* Transition Overlay */}
-      <TransitionOverlay active={transitioning} />
-
-      {/* Stage 3: Campus Scene */}
-      <AnimatePresence>
         {scene === 'campus' && (
           <motion.div
+            key="campus"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 1.2 }}
+            transition={{ duration: 0.25 }}
             id="campus"
           >
             <Suspense fallback={<SceneFallback />}>
@@ -163,15 +162,13 @@ function App() {
             </Suspense>
           </motion.div>
         )}
-      </AnimatePresence>
 
-      {/* Stage 4+: Main Content (Hero -> Courses -> Gyanoday -> Infrastructure -> Outcomes -> Mentor -> Journey -> Footer) */}
-      <AnimatePresence>
         {scene === 'content' && (
           <motion.div
+            key="content"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 1 }}
+            transition={{ duration: 0.8 }}
           >
             {/* Sticky Navbar */}
             <Navbar visible={showNavbar} />
@@ -230,6 +227,9 @@ function App() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* Transition Overlay */}
+      <TransitionOverlay active={transitioning} />
     </div>
   )
 }
