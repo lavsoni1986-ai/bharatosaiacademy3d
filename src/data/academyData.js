@@ -73,24 +73,24 @@ export const COURSE_BENEFITS = [
 export const DISCOUNT_CATEGORIES = [
   {
     id: 'school_9_12',
-    category: 'Class 9th to 12th School Students',
+    category: 'Class 9th–12th School Students',
     categoryHindi: 'कक्षा 9वीं से 12वीं के स्कूली छात्र',
     benefit: 'Special Discount',
-    description: 'Dedicated concession to empower young students with foundational AI literacy.',
+    description: 'Dedicated concession for school students (from other schools). Eligibility verified during admission.',
   },
   {
     id: 'st_sc',
     category: 'ST / SC Students',
     categoryHindi: 'ST / SC वर्ग के छात्र',
     benefit: 'Special Discount',
-    description: 'Special educational enablement concession upon verification of student category.',
+    description: 'Special educational enablement concession upon verification of student category during admission.',
   },
   {
     id: 'govt_school',
     category: 'Government School Students',
     categoryHindi: 'सरकारी स्कूल के विद्यार्थी',
     benefit: 'Special Discount',
-    description: 'Direct institutional discount to support digital inclusion from government schools.',
+    description: 'Direct institutional concession to support digital inclusion for government school students upon verification.',
   },
 ]
 
@@ -278,12 +278,17 @@ export const FOUNDER_INFO = {
 }
 
 export const GYANODAY_BATCH_INFO = {
-  name: 'Gyanoday School Batch',
-  programType: 'School Special Initiative',
-  badge: 'INSTITUTIONAL COHORT',
+  name: 'GYANODAY SCHOOL PARTNERSHIP',
+  shortName: 'Gyanoday School Partnership',
+  partnershipLockup: 'Gyanoday School × BharatOS Academy',
+  exclusiveOfferBadge: 'Exclusive Offer for Gyanoday School Students',
+  programType: 'Institutional School Partnership Offer',
+  badge: 'INSTITUTIONAL PARTNERSHIP',
   audience: 'Exclusively for eligible Gyanoday School students in Shahdol',
   duration: '4 Months Access',
-  summary: 'A dedicated subsidized practical AI learning initiative established specifically for Gyanoday School students, providing structured school-level AI literacy, disciplined prompt protocols, and hands-on smartphone development.',
+  disclaimer: 'This subsidized offer is exclusively for eligible Gyanoday School students under the institutional partnership.',
+  pricingSummary: '₹1,599 One-Time  OR  ₹500 / Month',
+  summary: 'A dedicated subsidized practical AI learning initiative established under an institutional partnership exclusively for eligible Gyanoday School students, providing structured school-level AI literacy, disciplined prompt protocols, and hands-on smartphone development.',
   plans: [
     {
       id: 'gyanoday_full',
@@ -292,7 +297,7 @@ export const GYANODAY_BATCH_INFO = {
       fee: '₹1,599',
       feeNumeric: 1599,
       duration: '4 Months Complete Access',
-      savingNote: 'Save ₹401 (Regular Monthly Total: ₹2,000)',
+      savingNote: 'Exclusive Gyanoday Student Offer',
       isRecommended: true,
       features: [
         'Complete 4-Month AI Curriculum for School Students',
@@ -301,7 +306,7 @@ export const GYANODAY_BATCH_INFO = {
         'Official BharatOS Academy Certificate of Completion',
         'Scheduled practical in-person workstation sessions',
       ],
-      whatsappText: 'Hello BharatOS AI Academy, I want to register for the Gyanoday School Batch (Full Payment: ₹1,599). Please share the registration process and confirm the applicable fee.',
+      whatsappText: 'Hello BharatOS Academy, I am a Gyanoday School student and want to register for the Gyanoday School Partnership Offer (Full Payment: ₹1,599). Please share the registration process.',
     },
     {
       id: 'gyanoday_monthly',
@@ -318,10 +323,10 @@ export const GYANODAY_BATCH_INFO = {
         'Mobile Sandbox Exercises & prompt drills',
         'Community Peer Support & instructor reviews',
       ],
-      whatsappText: 'Hello BharatOS AI Academy, I want to register for the Gyanoday School Batch (Monthly Plan: ₹500/month). Please share the registration process and confirm the applicable fee.',
+      whatsappText: 'Hello BharatOS Academy, I am a Gyanoday School student and want to register for the Gyanoday School Partnership Offer (Monthly Plan: ₹500/month). Please share the registration process.',
     },
   ],
-  generalWhatsappText: 'Hello BharatOS AI Academy, I want to register for the Gyanoday School Batch. Please share the registration process and confirm the applicable fee.',
+  generalWhatsappText: 'Hello BharatOS Academy, I am an eligible Gyanoday School student and want to inquire about the Gyanoday partnership offer. Please share details.',
 }
 
 

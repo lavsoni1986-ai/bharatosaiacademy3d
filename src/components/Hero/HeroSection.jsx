@@ -17,8 +17,8 @@ const Navbar = ({ visible }) => {
   }, [])
 
   const navLinks = [
-    { label: 'Curriculum', href: '#courses' },
-    { label: 'Gyanoday', href: '#gyanoday' },
+    { label: 'Courses', href: '#courses' },
+    { label: 'Programs', href: '#gyanoday' },
     { label: 'Infrastructure', href: '#infrastructure' },
     { label: 'Outcomes', href: '#outcomes' },
     { label: 'Mentor', href: '#mentor' },
@@ -181,7 +181,8 @@ const HeroSection = () => {
     >
       {/* Atmospheric Depth (Zero loud grid or neon gradients) */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-cyan-950/15 rounded-full blur-[140px]" />
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-cyan-950/25 rounded-full blur-[140px]" />
+        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[450px] bg-cyan-700/[0.07] rounded-full blur-[160px]" />
         <div className="absolute bottom-0 inset-x-0 h-40 bg-gradient-to-t from-bharatos-bg via-bharatos-bg/80 to-transparent" />
       </div>
 

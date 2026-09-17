@@ -30,6 +30,7 @@ const STUDENT_CATEGORY_OPTIONS = [
   'Class 9–12 Student (Special Discount Eligible)',
   'ST / SC Student (Special Discount Eligible)',
   'Government School Student (Special Discount Eligible)',
+  'Gyanoday School Student (Gyanoday Partnership Offer)',
   'Other / Self-Learner',
 ]
 
@@ -416,7 +417,7 @@ I am sharing the fee payment screenshot for verification.`
                     ))}
                   </select>
                   <p className="text-[11px] font-inter text-white/45 mt-1">
-                    Select if eligible for Class 9–12, ST/SC, or Govt School special discount. Eligibility verified upon document submission.
+                    Select if eligible for Class 9–12, ST/SC, or Govt School special discount, or Gyanoday School partnership offer. Eligibility verified upon document submission.
                   </p>
                 </div>
 

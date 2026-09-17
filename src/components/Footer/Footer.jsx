@@ -81,7 +81,7 @@ const Footer = () => {
             <h4 className="font-sora text-white text-sm font-semibold mb-4">Program Details</h4>
             <div className="space-y-2.5">
               <FooterLink href="#courses">{FLAGSHIP_PROGRAM.name}</FooterLink>
-              <FooterLink href="#gyanoday">Gyanoday School Batch</FooterLink>
+              <FooterLink href="#gyanoday">Gyanoday Partnership Offer</FooterLink>
               <FooterLink href="#courses">Duration: {FLAGSHIP_PROGRAM.duration} ({FLAGSHIP_PROGRAM.fee})</FooterLink>
               <FooterLink href="#infrastructure">Hardware Workstation Labs</FooterLink>
             </div>
