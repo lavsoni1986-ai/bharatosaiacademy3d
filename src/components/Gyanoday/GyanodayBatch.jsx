@@ -1,7 +1,7 @@
-﻿import React, { useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { School, CheckCircle2, ArrowRight, MessageSquare, Smartphone, FileText } from 'lucide-react'
-import { GYANODAY_BATCH_INFO, ACADEMY_INFO } from '../../data/academyData'
+import { School, CheckCircle2, ArrowRight, MessageSquare, Smartphone, FileText, Tag, GraduationCap, Sparkles } from 'lucide-react'
+import { GYANODAY_BATCH_INFO, ACADEMY_INFO, DISCOUNT_CATEGORIES, FLAGSHIP_PROGRAM } from '../../data/academyData'
 import GyanodayRegistrationModal from './GyanodayRegistrationModal'
 
 const GyanodayBatch = () => {
@@ -23,25 +23,100 @@ const GyanodayBatch = () => {
       className="relative py-24 px-6 sm:px-8 border-t border-white/[0.06] bg-[#08090d]"
     >
       <div className="max-w-6xl mx-auto relative z-10">
-        {/* Section Header */}
-        <div className="max-w-3xl mb-16 text-left">
+        {/* Section Header: Reframed for Academy Primary Course & Special Concessions */}
+        <div className="max-w-3xl mb-14 text-left">
           <div className="inline-flex items-center gap-2 text-xs font-inter text-cyan-400 font-medium tracking-wider uppercase mb-3 px-3 py-1 rounded-full bg-white/[0.03] border border-white/[0.08]">
-            <School size={13} className="text-cyan-400" />
-            <span>Institutional Special Cohort</span>
+            <Tag size={13} className="text-cyan-400" />
+            <span>Inclusive Education & Scholarships</span>
             <span>•</span>
-            <span>Shahdol School Track</span>
+            <span>Shahdol Cohorts</span>
           </div>
           <h2 className="font-sora text-3xl sm:text-4xl md:text-5xl font-semibold text-white mb-4 tracking-tight">
-            {GYANODAY_BATCH_INFO.name}
+            Special Discounts & Institutional Cohorts
           </h2>
           <p className="font-inter text-white/65 text-base sm:text-lg leading-relaxed mb-3">
-            {GYANODAY_BATCH_INFO.summary}
+            In addition to our primary {FLAGSHIP_PROGRAM.name} ({FLAGSHIP_PROGRAM.fee}), BharatOS Academy provides targeted educational concessions and subsidized school cohorts to ensure digital inclusion across Shahdol.
           </p>
-          <div className="text-xs font-mono text-cyan-400/90 flex items-center gap-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
-            <span>{GYANODAY_BATCH_INFO.audience}</span>
+        </div>
+
+        {/* Phase 5: Official Special Discounts Grid (No invented percentages or numbers) */}
+        <div className="mb-16">
+          <div className="text-left mb-6">
+            <div className="inline-flex items-center gap-2 text-xs font-inter text-cyan-400 font-medium tracking-wider uppercase mb-1">
+              <Sparkles size={13} className="text-cyan-400" />
+              <span>Category Concessions</span>
+            </div>
+            <h3 className="font-sora text-xl sm:text-2xl font-semibold text-white tracking-tight">
+              Special Discount Available For Eligible Students
+            </h3>
+            <p className="font-inter text-white/60 text-xs sm:text-sm mt-1">
+              Concession applied upon valid student ID / document verification during admission.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            {DISCOUNT_CATEGORIES.map((disc, dIdx) => (
+              <motion.div
+                key={disc.id}
+                initial={{ opacity: 0, y: 15 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.45, delay: dIdx * 0.1 }}
+                className="editorial-card p-6 border border-cyan-500/20 bg-[#0c0e16] hover:border-cyan-500/40 transition-all flex flex-col justify-between"
+              >
+                <div>
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="font-mono text-[11px] px-2.5 py-1 rounded bg-cyan-950/70 border border-cyan-500/40 text-cyan-300 font-semibold uppercase tracking-wider">
+                      {disc.benefit}
+                    </span>
+                    <GraduationCap size={16} className="text-cyan-400" />
+                  </div>
+                  <h4 className="font-sora text-lg font-semibold text-white mb-1 tracking-tight">
+                    {disc.category}
+                  </h4>
+                  <div className="text-xs font-inter text-cyan-400/80 mb-3">
+                    {disc.categoryHindi}
+                  </div>
+                  <p className="font-inter text-white/60 text-xs sm:text-sm leading-relaxed mb-5">
+                    {disc.description}
+                  </p>
+                </div>
+
+                <div className="pt-3 border-t border-white/[0.06]">
+                  <a
+                    href={`https://wa.me/${ACADEMY_INFO.contact.whatsapp}?text=Hello%20BharatOS%20Academy%2C%20I%20am%20eligible%20for%20the%20${encodeURIComponent(disc.category)}%20Special%20Discount.%20Please%20share%20the%20concession%20details.`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs font-inter text-cyan-400 hover:text-cyan-300 flex items-center justify-between group"
+                  >
+                    <span>Inquire via WhatsApp Desk</span>
+                    <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform" />
+                  </a>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
+
+        {/* Phase 9: Gyanoday Institutional Partnership Cohort */}
+        <div className="pt-10 border-t border-white/[0.08]">
+          <div className="max-w-3xl mb-10 text-left">
+            <div className="inline-flex items-center gap-2 text-xs font-inter text-cyan-400 font-medium tracking-wider uppercase mb-2 px-3 py-1 rounded-full bg-white/[0.03] border border-white/[0.08]">
+              <School size={13} className="text-cyan-400" />
+              <span>Institutional Partnership Cohort</span>
+              <span>•</span>
+              <span>Gyanoday School Track</span>
+            </div>
+            <h3 className="font-sora text-2xl sm:text-3xl font-semibold text-white mb-3 tracking-tight">
+              {GYANODAY_BATCH_INFO.name}
+            </h3>
+            <p className="font-inter text-white/65 text-sm sm:text-base leading-relaxed mb-3">
+              {GYANODAY_BATCH_INFO.summary}
+            </p>
+            <div className="text-xs font-mono text-cyan-400/90 flex items-center gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
+              <span>{GYANODAY_BATCH_INFO.audience}</span>
+            </div>
+          </div>
 
         {/* Dual Registration Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
@@ -172,6 +247,7 @@ const GyanodayBatch = () => {
               <span>Gyanoday WhatsApp Desk</span>
             </a>
           </div>
+        </div>
         </div>
       </div>
 

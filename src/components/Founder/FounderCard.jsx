@@ -36,6 +36,8 @@ const FounderCard = () => {
                 src={FOUNDER_INFO.portraitImage}
                 alt={`${FOUNDER_INFO.name} — ${FOUNDER_INFO.role}`}
                 className="w-full h-full object-cover object-top filter contrast-[1.03]"
+                width="1024"
+                height="1536"
                 loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
@@ -43,13 +45,18 @@ const FounderCard = () => {
 
             {/* Profile Info */}
             <div className="flex-1 text-center sm:text-left">
-              <div className="flex flex-wrap items-center justify-center sm:justify-between gap-3 mb-2">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-2">
                 <h3 className="font-sora text-2xl sm:text-3xl font-semibold text-white tracking-tight">
                   {FOUNDER_INFO.name}
                 </h3>
-                <span className="text-xs font-mono text-cyan-400 bg-cyan-950/60 px-3 py-1 rounded border border-cyan-500/30">
-                  {FOUNDER_INFO.credential}
-                </span>
+                <div className="flex flex-wrap items-center justify-center sm:justify-end gap-2">
+                  <span className="text-xs font-mono text-cyan-400 bg-cyan-950/60 px-2.5 py-1 rounded border border-cyan-500/30">
+                    {FOUNDER_INFO.credential}
+                  </span>
+                  <span className="text-xs font-mono text-white/80 bg-white/[0.05] px-2.5 py-1 rounded border border-white/10">
+                    {FOUNDER_INFO.experience}
+                  </span>
+                </div>
               </div>
 
               <div className="text-xs font-inter text-white/50 mb-4 flex items-center justify-center sm:justify-start gap-1.5">

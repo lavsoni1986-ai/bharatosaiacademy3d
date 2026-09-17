@@ -105,6 +105,8 @@ const Statistics = () => {
                 src={FIRST_BATCH_PROOFS.groupPhoto}
                 alt="BharatOS AI Academy First Batch Students with Certificate in Shahdol"
                 className="w-full h-full object-cover object-top"
+                width="1086"
+                height="1448"
                 loading="lazy"
               />
             </div>
@@ -178,6 +180,8 @@ const Statistics = () => {
                   src={activeCert.certImage}
                   alt={`Certificate for ${activeCert.name}`}
                   className="w-full h-auto object-contain max-h-[55vh]"
+                  width="2526"
+                  height="1786"
                 />
               </div>
 

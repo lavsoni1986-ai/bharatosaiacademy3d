@@ -49,20 +49,20 @@ const Navbar = ({ visible }) => {
             >
               <img
                 src="/bharatos-academy-logo.png"
-                alt="BharatOS AI Academy — Shahdol"
+                alt="BharatOS Academy — Shahdol"
                 className="h-8 sm:h-9 w-auto drop-shadow-[0_0_12px_rgba(0,240,255,0.2)] transition-transform group-hover:scale-105"
                 width="36"
                 height="46"
               />
               <div className="flex flex-col text-left">
                 <span className="font-sora font-semibold text-white text-sm sm:text-base tracking-tight leading-tight">
-                  BharatOS <span className="font-normal text-white/70">AI Academy</span>
+                  BharatOS <span className="font-normal text-white/70">Academy</span>
                 </span>
                 <span className="text-[10px] font-inter text-white/50 tracking-wider uppercase hidden sm:block">
-                  Learn • Build • Grow | Shahdol
+                  AI Skills for Every Bharat | Shahdol
                 </span>
                 <span className="text-[10px] font-mono text-cyan-400/80 sm:hidden">
-                  Shahdol
+                  Shahdol, MP
                 </span>
               </div>
             </a>
@@ -191,77 +191,100 @@ const HeroSection = () => {
           initial={reducedMotion ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="flex justify-center mb-5"
+          className="flex justify-center mb-4"
         >
           <img
             src="/bharatos-academy-logo.png"
-            alt="BharatOS AI Academy — Shahdol"
+            alt="BharatOS Academy — Shahdol"
             className="w-16 sm:w-20 h-auto drop-shadow-[0_0_25px_rgba(0,240,255,0.25)]"
             width="80"
             height="102"
           />
         </motion.div>
 
-        {/* 1. Calm Institutional Location Anchor */}
+        {/* 1. Primary Hindi Positioning Badge */}
         <motion.div
           initial={reducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, delay: 0.15 }}
-          className="inline-flex items-center gap-2 text-xs sm:text-sm font-inter text-cyan-400 font-medium tracking-wide mb-6 px-3.5 py-1.5 rounded-full bg-white/[0.03] border border-white/[0.08]"
+          className="inline-flex items-center gap-2 text-xs sm:text-sm md:text-base font-inter text-cyan-300 font-medium tracking-wide mb-4 px-4 py-1.5 rounded-full bg-cyan-950/50 border border-cyan-500/30 shadow-[0_0_20px_rgba(0,240,255,0.15)]"
         >
-          <span className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
-          <span>BharatOS AI Academy • {ACADEMY_INFO.location.displayLocation}</span>
+          <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
+          <span>{ACADEMY_INFO.taglineHindi}</span>
         </motion.div>
 
-        {/* 2. Editorial Authoritative Headline */}
+        {/* 2. Brand Name & Accessible English Positioning */}
         <motion.h1
           initial={reducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-          className="font-sora text-4xl sm:text-6xl md:text-7xl font-semibold text-white mb-6 tracking-tight leading-[1.12]"
+          className="font-sora text-4xl sm:text-6xl md:text-7xl font-semibold text-white mb-2 sm:mb-3 tracking-tight leading-[1.1]"
         >
-          Build the future <br />
-          <span className="font-normal text-white/90">with practical AI.</span>
+          BharatOS Academy
         </motion.h1>
 
-        {/* 3. Program Pillar Badge: Transparent Duration & Fee */}
+        <motion.div
+          initial={reducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.35 }}
+          className="font-sora text-xl sm:text-2xl md:text-3xl text-cyan-400/90 font-medium mb-5 tracking-tight"
+        >
+          {ACADEMY_INFO.taglineEnglish}
+        </motion.div>
+
+        {/* 3. Action Philosophy Ribbon (Motto) */}
+        <motion.div
+          initial={reducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.45, delay: 0.4 }}
+          className="inline-flex flex-col items-center gap-1 mb-6 px-5 py-2.5 rounded-xl bg-white/[0.03] border border-white/[0.08]"
+        >
+          <div className="font-mono text-xs sm:text-sm font-semibold tracking-widest text-cyan-300">
+            {ACADEMY_INFO.mottoEnglish}
+          </div>
+          <div className="font-inter text-xs text-white/60">
+            {ACADEMY_INFO.mottoHindi}
+          </div>
+        </motion.div>
+
+        {/* 4. Program Duration & Transparent Fee Badge */}
         <motion.div
           initial={reducedMotion ? { opacity: 1 } : { opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.45, delay: 0.4 }}
-          className="inline-flex flex-wrap items-center justify-center gap-2.5 sm:gap-3 mb-8 text-xs sm:text-sm font-inter"
+          transition={{ duration: 0.45, delay: 0.45 }}
+          className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-6 text-xs sm:text-sm font-inter"
         >
           <span className="px-3 py-1 rounded-md bg-white/[0.05] border border-white/10 text-white font-medium">
             {FLAGSHIP_PROGRAM.name}
           </span>
           <span className="text-white/40">•</span>
-          <span className="text-white/80 font-medium">{FLAGSHIP_PROGRAM.subtitle}</span>
+          <span className="text-white/80 font-medium">{FLAGSHIP_PROGRAM.duration}</span>
           <span className="text-white/40">•</span>
           <span className="text-cyan-400 font-semibold text-sm sm:text-base">{FLAGSHIP_PROGRAM.fee}</span>
         </motion.div>
 
-        {/* 4. Human, Clear Supporting Copy */}
+        {/* 5. Clear, Plain Supporting Copy */}
         <motion.p
           initial={reducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.5 }}
-          className="font-inter text-white/70 text-base sm:text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed font-normal"
+          className="font-inter text-white/70 text-sm sm:text-base md:text-lg max-w-2xl mx-auto mb-8 leading-relaxed font-normal"
         >
-          Learn AI by building real things — software, automation, intelligent agents,
-          and useful products. In-person laptop workstation labs in Shahdol with smartphone-first continuous practice.
+          Learn practical AI by building real things: websites without coding, games,
+          graphics & video, smart automation, and freelancing. In-person laptop workstation labs in Shahdol with smartphone-first practice.
         </motion.p>
 
-        {/* 5. Action Center: Tactile Primary CTA & Editorial Secondary Link */}
+        {/* 6. Action Center: Primary CTA & Secondary Link */}
         <motion.div
           initial={reducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, delay: 0.65 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mb-12"
+          transition={{ duration: 0.4, delay: 0.6 }}
+          className="flex flex-col sm:flex-row items-center justify-center gap-3.5 sm:gap-5 mb-8"
         >
           {/* Primary Action */}
           <a
             href="#courses"
-            className="btn-primary w-full sm:w-auto text-sm font-inter font-medium px-7 py-3 flex items-center justify-center gap-2 group"
+            className="btn-primary w-full sm:w-auto text-sm font-inter font-medium px-7 py-3 flex items-center justify-center gap-2 group shadow-lg shadow-cyan-950/40"
           >
             <span>Start Learning · {FLAGSHIP_PROGRAM.fee}</span>
             <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
@@ -273,16 +296,16 @@ const HeroSection = () => {
             className="btn-glass w-full sm:w-auto text-sm font-inter font-normal px-6 py-3 flex items-center justify-center gap-2"
           >
             <BookOpen size={16} className="text-cyan-400" />
-            <span>View 45-Day Curriculum</span>
+            <span>View 10 Course Modules</span>
           </a>
         </motion.div>
 
-        {/* 6. Institutional Location & Hardware Footnote */}
+        {/* 7. Institutional Location & Hardware Footnote */}
         <motion.div
           initial={reducedMotion ? { opacity: 1 } : { opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.8 }}
-          className="pt-6 border-t border-white/[0.08] flex flex-wrap items-center justify-center gap-2.5 sm:gap-4 font-inter text-xs text-white/40"
+          transition={{ duration: 0.5, delay: 0.7 }}
+          className="pt-5 border-t border-white/[0.08] flex flex-wrap items-center justify-center gap-2.5 sm:gap-4 font-inter text-xs text-white/45"
         >
           <span>Near Jain Mandir, Near Mohanram Talab</span>
           <span>•</span>

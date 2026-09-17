@@ -24,7 +24,7 @@ const Footer = () => {
           <div className="flex items-start sm:items-center gap-4 sm:gap-5 max-w-2xl">
             <img
               src="/bharatos-academy-logo.png"
-              alt="BharatOS AI Academy — Shahdol"
+              alt="BharatOS Academy — Shahdol"
               className="w-12 sm:w-16 h-auto shrink-0 drop-shadow-[0_0_15px_rgba(0,240,255,0.15)] mt-1 sm:mt-0"
               width="64"
               height="82"
@@ -32,20 +32,20 @@ const Footer = () => {
             />
             <div>
               <div className="font-sora text-2xl sm:text-3xl font-semibold text-white tracking-tight mb-1">
-                BharatOS <span className="font-normal text-white/70">AI Academy</span>
+                BharatOS <span className="font-normal text-white/70">Academy</span>
               </div>
               <p className="font-inter text-cyan-400 text-xs sm:text-sm font-medium mb-1.5">
-                {FLAGSHIP_PROGRAM.name} • {FLAGSHIP_PROGRAM.subtitle} • {FLAGSHIP_PROGRAM.fee}
+                {FLAGSHIP_PROGRAM.name} • {ACADEMY_INFO.taglineEnglish} • {FLAGSHIP_PROGRAM.fee}
               </p>
               <p className="font-inter text-white/60 text-xs sm:text-sm leading-relaxed">
-                Empowering students in central India with tier-1 practical AI, automation, and software engineering capabilities.
+                {ACADEMY_INFO.taglineHindi} — Empowering learners across central India with practical AI skills, websites without coding, creative media, and automation.
               </p>
             </div>
           </div>
 
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full md:w-auto">
             <a
-              href={`https://wa.me/${ACADEMY_INFO.contact.whatsapp}?text=Hello%20BharatOS%20AI%20Academy%2C%20I%20want%20to%20inquire%20about%20admissions%20for%20the%2045-Day%20AI%20Foundation%20Course.`}
+              href={`https://wa.me/${ACADEMY_INFO.contact.whatsapp}?text=Hello%20BharatOS%20Academy%2C%20I%20want%20to%20inquire%20about%20admissions%20for%20the%2045-Day%20AI%20Foundation%20Course.`}
               target="_blank"
               rel="noopener noreferrer"
               className="btn-primary text-xs font-inter font-medium px-6 py-3 flex items-center justify-center gap-2"
@@ -123,7 +123,7 @@ const Footer = () => {
                 </a>
               </div>
               <div className="pt-1 text-xs font-inter text-white/40">
-                Founder & Mentor: Lav Soni
+                Founder & Mentor: Lav Kumar Soni
               </div>
             </div>
           </div>
@@ -166,7 +166,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="font-inter text-white/40 text-xs sm:text-sm">
-            © 2026 BharatOS AI Academy. All rights reserved.
+            © 2026 BharatOS Academy. All rights reserved.
           </p>
           <div className="font-inter text-white/40 text-xs flex items-center gap-2">
             <span>Shahdol District, Madhya Pradesh</span>

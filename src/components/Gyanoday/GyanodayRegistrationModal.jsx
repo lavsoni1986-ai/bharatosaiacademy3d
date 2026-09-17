@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { X, CheckCircle2, Download, Copy, Check, MessageSquare, AlertCircle, Loader2 } from 'lucide-react'
 import { ACADEMY_INFO, GYANODAY_BATCH_INFO } from '../../data/academyData'
@@ -25,6 +25,14 @@ const GOAL_OPTIONS = [
   'Other Career Goal',
 ]
 
+const STUDENT_CATEGORY_OPTIONS = [
+  'General / Standard Admission',
+  'Class 9–12 Student (Special Discount Eligible)',
+  'ST / SC Student (Special Discount Eligible)',
+  'Government School Student (Special Discount Eligible)',
+  'Other / Self-Learner',
+]
+
 export default function GyanodayRegistrationModal({ isOpen, onClose, defaultPlanId = 'gyanoday_full' }) {
   const [selectedPlanId, setSelectedPlanId] = useState(defaultPlanId)
   const [studentName, setStudentName] = useState('')
@@ -32,6 +40,7 @@ export default function GyanodayRegistrationModal({ isOpen, onClose, defaultPlan
   const [parentMobile, setParentMobile] = useState('')
   const [qualification, setQualification] = useState(CLASS_OPTIONS[1]) // default 10th
   const [futureGoal, setFutureGoal] = useState(GOAL_OPTIONS[0])
+  const [studentCategory, setStudentCategory] = useState(STUDENT_CATEGORY_OPTIONS[0])
   const [honeypot, setHoneypot] = useState('')
 
   const [loading, setLoading] = useState(false)
@@ -147,8 +156,9 @@ export default function GyanodayRegistrationModal({ isOpen, onClose, defaultPlan
         parentMobile: trimmedParentMobile || 'Not provided',
         qualification,
         futureGoal,
+        studentCategory,
         paymentPlan: `${selectedPlan.title} (${selectedPlan.fee})`,
-        source: 'BharatOS AI Academy — Gyanoday Admission Desk',
+        source: 'BharatOS Academy — Admission Desk',
       }
 
       // 1. Instant client-side PDF receipt generation and download
@@ -387,6 +397,27 @@ I am sharing the fee payment screenshot for verification.`
                       ))}
                     </select>
                   </div>
+                </div>
+
+                {/* Phase 6: Student Category / Special Concession (Optional) */}
+                <div>
+                  <label className="block text-xs font-mono uppercase tracking-wider text-white/70 mb-1.5">
+                    Student Category / Special Concession <span className="text-white/40">(Optional)</span>
+                  </label>
+                  <select
+                    value={studentCategory}
+                    onChange={(e) => setStudentCategory(e.target.value)}
+                    className="w-full px-3 py-2.5 rounded-lg bg-black/50 border border-white/10 text-white text-xs sm:text-sm focus:border-cyan-400 focus:outline-none transition-colors"
+                  >
+                    {STUDENT_CATEGORY_OPTIONS.map((opt) => (
+                      <option key={opt} value={opt} className="bg-[#0b0f19] text-white">
+                        {opt}
+                      </option>
+                    ))}
+                  </select>
+                  <p className="text-[11px] font-inter text-white/45 mt-1">
+                    Select if eligible for Class 9–12, ST/SC, or Govt School special discount. Eligibility verified upon document submission.
+                  </p>
                 </div>
 
                 {/* Honeypot anti-spam field (hidden) */}
